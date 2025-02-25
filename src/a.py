@@ -15,9 +15,10 @@ def extract_logs_by_date(log_file, target_date, output_dir):
     try:
         with open(log_file, 'r') as file:
             for line in file:
-                log_date = line.split()[0]  # Extract date from log entry
+                log_date = line[0:10]  # Extract date from log entry
+                print (log_date)
                 if log_date == target_date:
-                    extracted_logs.append(line.strip())
+                    extracted_logs.append(line[10:])
 
     except FileNotFoundError:
         print(f"Error: The file '{log_file}' was not found.")
